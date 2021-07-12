@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  dockerdap:
+    container_name: dockerdap
+    image: dockerdap:latest
+    build:
+      context: .
+      dockerfile: dockerdap.dockerfile
+    entrypoint: /bin/bash
+    command: -c "pip install debugpy && python -m debugpy --listen 0.0.0.0:5678 --wait-for-client /app/main.py"
+    ports:
+      - 5678:5678
+    restart: unless-stopped
+    volumes:
+      - "./app:/app"

@@ -1,0 +1,7 @@
+FROM python:3
+
+ENV PYTHONDONTWRITEBYTECODE 1
+
+ENV PYTHONUNBUFFERED 1
+
+CMD ["python", "/app/main.py"]
